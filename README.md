@@ -1,10 +1,12 @@
 
-# Recordatorio
+# Biblioteca C++
 
-## - Completar lists (funciones de Queue)
+## Recordatorio
 
-## - Testear TAD List
+### - Completar lists (funciones de Queue)
 
-## - Desarrollar TAD Stack
+### - Testear TAD List
 
-## - Modificar las funciones sort del TAD Map (simplificar codigo)
+### - Desarrollar TAD Stack
+
+### - Modificar las funciones sort del TAD Map (simplificar codigo)
