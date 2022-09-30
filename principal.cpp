@@ -41,20 +41,22 @@ void showList(Node<T> *p)
 
 int main()
 {
-	Node<int> *p = NULL;
-	add<int>(p, 2);
-	add<int>(p, 1);
-	add<int>(p, 5);
-	add<int>(p, 2);
-	add<int>(p, 3);
-	add<int>(p, 4);
-	add<int>(p, 7);
+	List<int> lst = list<int>();
 
-	showList<int>(p);
+	listAdd<int>(lst, 1);
+	listAdd<int>(lst, 2);
+	listAdd<int>(lst, 3);
 
-	sort<int>(p, cmpInt);
 
-	showList<int>(p);
+	listReset<int>(lst);
+	while (listHasNext<int>(lst))
+	{
+		int *e = listNext<int>(lst);
+		cout << *e << endl;
+	}
+
+	listFree<int>(lst);
+
 	return 0;
 }
 

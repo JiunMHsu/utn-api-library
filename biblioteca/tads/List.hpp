@@ -15,10 +15,6 @@ struct List // 1.7.4.1
    int size;
 };
 
-// Revisar si los accesos a punteros de la struct
-// hacen falta usar operador flecha
-// ej: lst->first  /  lst->aux
-
 template <typename T>
 List<T> list() // 1.7.4.2
 {
@@ -34,9 +30,7 @@ T *listAdd(List<T> &lst, T e) // 1.7.4.3
 {
    Node<T> *node = add<T>(lst.first, e);
    lst.size++;
-   // revisar si hace falta '&'
-   // return &(node->data) ??
-   return node->data;
+   return &(node->data);
 }
 
 template <typename T>
@@ -44,7 +38,7 @@ T *listAddFirst(List<T> &lst, T e) // 1.7.4.4
 {
    Node<T> *node = addFirst<T>(lst.first, e);
    lst.size++;
-   return node->data; // return &(node->data) ??
+   return &(node->data);
 }
 
 template <typename T, typename K>
@@ -67,7 +61,7 @@ template <typename T, typename K>
 T *listFind(List<T> lst, K k, int cmpTK(T, K)) // 1.7.4.7
 {
    Node<T> *node = find<T, K>(lst, k, cmpTK);
-   return node->data; // return &(node->data) ??
+   return &(node->data);
 }
 
 template <typename T>
@@ -86,6 +80,10 @@ template <typename T>
 void listFree(List<T> &lst) // 1.7.4.10
 {
    free<T>(lst.first);
+   if (!isEmpty<T>(lst.aux))
+   {
+      free<T>(lst.au);
+   }
    lst.size = 0;
 }
 
@@ -94,7 +92,7 @@ T *listOrderedInsert(List<T> &lst, T t, int cmpTT(T, T)) // 1.7.4.11
 {
    Node<T> *node = orderedInsert<T>(lst.first, t, cmpTT);
    lst.size++;
-   return node->data; // return &(node->data) ??
+   return &(node->data);
 }
 
 template <typename T>
@@ -103,7 +101,6 @@ void listSort(List<T> &lst, int cmpTT(T, T)) // 1.7.4.12
    sort<T>(lst.first, cmpTT);
 }
 
-// depurar y revisar si hay otra alternativa
 template <typename T>
 void listReset(List<T> &lst) // 1.7.4.13
 {
@@ -118,14 +115,14 @@ void listReset(List<T> &lst) // 1.7.4.13
 template <typename T>
 bool listHasNext(List<T> lst) // 1.7.4.13
 {
-   return lst.aux->next == NULL;
+   return lst.aux->next != NULL;
 }
 
 template <typename T>
 T *listNext(List<T> &lst) // 1.7.4.14
 {
    lst.aux = lst.aux->next;
-   return lst.aux->data; // return con '&' ??
+   return &(lst.aux->data); // return con '&' ??
 }
 
 // revisar si funca
