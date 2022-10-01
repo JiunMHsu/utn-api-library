@@ -122,7 +122,7 @@ template <typename T>
 T *listNext(List<T> &lst) // 1.7.4.14
 {
    lst.aux = lst.aux->next;
-   return &(lst.aux->data); // return con '&' ??
+   return &(lst.aux->data);
 }
 
 // revisar si funca
