@@ -82,7 +82,7 @@ void listFree(List<T> &lst) // 1.7.4.10
    free<T>(lst.first);
    if (!isEmpty<T>(lst.aux))
    {
-      free<T>(lst.au);
+      free<T>(lst.aux);
    }
    lst.size = 0;
 }
