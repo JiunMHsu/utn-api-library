@@ -37,7 +37,7 @@ int bitReaderRead(BitReader &br)
 {
    if (isEmpty(br.byte))
    {
-      u_char ucByte = read<unsigned char>(br.file);
+      u_char ucByte = read<u_char>(br.file);
       br.byte = binToString(ucByte);
    }
    char bit = br.byte[0];

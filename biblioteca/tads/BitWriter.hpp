@@ -29,7 +29,7 @@ void bitWriterWrite(BitWriter &bw, int bit)
       int byte = stringToInt(bw.byte, 2);
       u_char ucByte = (unsigned char)byte;
 
-      write<unsigned char>(bw.file, ucByte);
+      write<u_char>(bw.file, ucByte);
 
       // vaciar el string para guardar los siguientes bits
       bw.byte = "";

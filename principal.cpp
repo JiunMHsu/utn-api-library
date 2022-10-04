@@ -29,12 +29,18 @@ int cmpInt(int a, int b)
 
 int main()
 {
+	FILE *h = fopen("test.dat", "w+b");
 
-	FILE *f = fopen("test.txt", "r+b");
+	write<char>(h, 'A');
+	write<char>(h, 'H');
+
+	fclose(h);
+
+	FILE *f = fopen("test.dat", "r+b");
 
 	BitReader tstBr = bitReader(f);
 
-	// 01000001 11101001
+	// 01000001 01001000
 
 	// u_char uc = read<u_char>(f);
 	// string byte = binToString(uc);
