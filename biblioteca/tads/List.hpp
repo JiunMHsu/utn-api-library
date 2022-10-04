@@ -60,7 +60,7 @@ T listRemoveFirst(List<T> &lst) // 1.7.4.6
 template <typename T, typename K>
 T *listFind(List<T> lst, K k, int cmpTK(T, K)) // 1.7.4.7
 {
-   Node<T> *node = find<T, K>(lst, k, cmpTK);
+   Node<T> *node = find<T, K>(lst.first, k, cmpTK);
    return &(node->data);
 }
 
@@ -80,10 +80,10 @@ template <typename T>
 void listFree(List<T> &lst) // 1.7.4.10
 {
    free<T>(lst.first);
-   if (!isEmpty<T>(lst.aux))
-   {
-      free<T>(lst.aux);
-   }
+   // if (!isEmpty<T>(lst.aux))
+   // {
+   //    free<T>(lst.aux);
+   // }
    lst.size = 0;
 }
 
@@ -104,10 +104,10 @@ void listSort(List<T> &lst, int cmpTT(T, T)) // 1.7.4.12
 template <typename T>
 void listReset(List<T> &lst) // 1.7.4.13
 {
-   if (lst.aux != NULL)
-   {
-      free<T>(lst.aux);
-   }
+   // if (lst.aux != NULL)
+   // {
+   //    free<T>(lst.aux);
+   // }
    lst.aux = new Node<T>;
    lst.aux->next = lst.first;
 }
@@ -125,20 +125,11 @@ T *listNext(List<T> &lst) // 1.7.4.14
    return &(lst.aux->data);
 }
 
-// revisar si funca
-// estructura sacada de collNext(overload)
 template <typename T>
 T *listNext(List<T> &lst, bool &endOfList) // 1.7.4.15
 {
-   if (listHasNext<T>(lst))
-   {
-      endOfList = true;
-   }
-   else
-   {
-      endOfList = false;
-   }
    T *t = listNext<T>(lst);
+   endOfList = (listHasNext<T>(lst)) ? false : true;
    return t;
 }
 
