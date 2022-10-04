@@ -9,6 +9,4 @@ Biblioteca para C++ desarrollado como practicas de la asignatura "Algoritmos y E
 
 - Completar lists (funciones de Queue)
 
-- Testear TAD Stack
-
 - Modificar las funciones sort del TAD Map (simplificar codigo)

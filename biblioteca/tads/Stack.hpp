@@ -18,7 +18,7 @@ template <typename T>
 Stack<T> stack() // 1.7.5.2
 {
    Stack<T> st;
-   st.first = new Node<T>;
+   st.first = NULL;
    st.size = 0;
    return st;
 }
