@@ -29,25 +29,33 @@ int cmpInt(int a, int b)
 
 int main()
 {
-	Stack<int> st = stack<int>();
 
-	stackPush<int>(st, 1);
-	stackPush<int>(st, 2);
-	stackPush<int>(st, 3);
-	stackPush<int>(st, 4);
-	stackPush<int>(st, 5);
+	FILE *f = fopen("test.txt", "r+b");
 
-	cout << stackSize<int>(st) << endl;
+	BitReader tstBr = bitReader(f);
 
-	while (!stackIsEmpty<int>(st))
+	// 01000001 11101001
+
+	// u_char uc = read<u_char>(f);
+	// string byte = binToString(uc);
+	// cout << byte << endl;
+
+	// cout << endl;
+
+	// uc = read<u_char>(f);
+	// byte = binToString(uc);
+	// cout << byte << endl;
+	
+	// cout << endl;
+
+	int bit = bitReaderRead(tstBr);
+	while (!feof(f))
 	{
-		int n = stackPop<int>(st);
-		cout << n << ", ";
+		cout << bit << ".";
+		bit = bitReaderRead(tstBr);
 	}
-	cout << endl;
-	cout << endl;
 
-	cout << stackSize<int>(st) << endl;
+	fclose(f);
 
 	return 0;
 }
